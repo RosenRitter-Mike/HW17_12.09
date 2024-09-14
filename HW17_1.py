@@ -3,7 +3,6 @@ import pprint
 import sqlite_lib as sl
 
 
-# import pprint
 # 1.
 def print_course(courses: list) -> None:
     for course in courses:
