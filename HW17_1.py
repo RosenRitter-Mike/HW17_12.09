@@ -120,3 +120,18 @@ def all_in_all() -> None:
 
 # MINI_TEST
 # all_in_all();
+
+# h.
+def all_lect() -> None:
+    sl.connect('hw17_db');
+
+    result: list[tuple] = sl.run_query_select('''
+            SELECT l.*, c.course_id, c.course_name FROM lecturers l 
+            CROSS JOIN courses c 
+        ''');
+
+    print_course(result);
+
+
+# MINI_TEST
+all_lect();
