@@ -110,16 +110,23 @@ def all_lectors() -> None:
 def all_in_all() -> None:
     sl.connect('hw17_db');
 
+    ''' SELECT * FROM lecturers lec
+        FULL OUTER JOIN courses co USING(lecturer_id) '''
+
     result: list[tuple] = sl.run_query_select('''
-            SELECT * FROM lecturers lec
-            FULL OUTER JOIN courses co USING(lecturer_id)
+            SELECT * FROM lecturers l 
+            LEFT OUTER JOIN courses c ON l.lecturer_id = c.lecturer_id
+            UNION
+            SELECT * FROM courses c 
+            lEFT OUTER JOIN lecturers l ON l.lecturer_id = c.lecturer_id 
         ''');
 
     print_course(result);
 
 
 # MINI_TEST
-# all_in_all();
+all_in_all();
+
 
 # h.
 def all_lect() -> None:
@@ -134,4 +141,4 @@ def all_lect() -> None:
 
 
 # MINI_TEST
-all_lect();
+# all_lect();
